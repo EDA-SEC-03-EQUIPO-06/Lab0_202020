@@ -102,7 +102,7 @@ def countElementsFilteredByColumn(criteria, column, lst):
         print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
     return counter
 
-def countElementsByCriteria(criteria:str, column:int,casting:list,details:list):
+def countElementsByCriteria(criteria:str,casting:list,details:list):
     """
     Retorna la cantidad de elementos que cumplen con un criterio para una columna dada
     """
@@ -113,14 +113,15 @@ def countElementsByCriteria(criteria:str, column:int,casting:list,details:list):
         t1_start = process_time() #tiempo inicial
         counter=0 #Cantidad de repeticiones
         suma=0
-        for element in casting:
-            if criteria.lower() in element[column].lower(): #filtrar por palabra clave 
-                id= element[0]
+        for elemento in casting:
+            if criteria.lower() == elemento.get("director_name").lower(): #filtrar por palabra clave 
+                print("funciona")
+                id= elemento.get("id")
                 for cada_elemento in details:
-                    if cada_elemento[0]==id:
-                        if cada_elemento[17]>=6.0:
+                    if cada_elemento.get("id")==id:
+                        if float(cada_elemento.get("vote_average"))>=6.0:
                             counter+=1
-                            suma+=float(cada_elemento[17])
+                            suma+=float(cada_elemento.get("vote_average"))
         promedio= suma/counter 
         t1_stop = process_time() #tiempo final
         print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
@@ -156,7 +157,7 @@ def main():
                 print("Coinciden ",counter," elementos con el crtierio: ", criteria  )
             elif int(inputs[0])==4: #opcion 4
                 criteria =input('Ingrese el nombre del director que quiere buscar\n')
-                resultados=countElementsByCriteria(criteria,12,casting,details)
+                resultados=countElementsByCriteria(criteria,casting,details)
                 print("El director@",criteria," tiene ", resultados[0] ," películas buenas con un promedio de calificación de ",round(resultados[1],2),".")
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0)
