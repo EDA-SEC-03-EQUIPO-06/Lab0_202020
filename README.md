@@ -1,4 +1,4 @@
-***Integrantes***:
+#Integrantes:
 * Diego Alejandro Rodriguez Ávila / d.rodriguez57@uniandes.edu.co / 201923986 
 * Valentina Zapata Coronel / v.zapatac@uniandes.edu.co / 201914727
 * Juan Carlos Marin Morales / j.marinm@uniandes.edu.co / 202013973
@@ -9,7 +9,7 @@
 
 
 
-# Proyecto base para los desarrollar los laboratorios
+**Proyecto base para los desarrollar los laboratorios**
 
 *	ADT: archivos Python con la definición de los Tipos Abstractos de Datos.
 *	App: aplicación Python cliente que usa las ADTs y ordenamientos para dar solución a laboratorios y retos.
