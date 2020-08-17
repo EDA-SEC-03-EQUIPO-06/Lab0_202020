@@ -107,7 +107,7 @@ def countElementsByCriteria(criteria, column_criteria, column_average, lst1, lst
     """
     "Criteria: Nombre del director del cual estamos buscando peliculas"
     "Column: Columna que en este caso será la columna de vote_average"
-    
+    t1_start = process_time()
     counter = 0
     suma = 0
     for i in range(1, len(lst2)):
@@ -117,6 +117,8 @@ def countElementsByCriteria(criteria, column_criteria, column_average, lst1, lst
             if float(a[column_average]) >= 6.0:
                 counter += 1
             suma += float(a[column_average])
+    t1_stop = process_time()
+    print("tiempo de ejecucion ", t1_stop-t1_start," segundos")
     return (counter, round(suma/counter,2))
 
 
