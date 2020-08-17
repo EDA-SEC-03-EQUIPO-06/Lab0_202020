@@ -119,12 +119,7 @@ def countElementsByCriteria(lst, d, l):
         print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
     return (counter, prom)
    
-   def countElementsByCriteria1(criteria, column_criteria, column_average, lst1, lst2):
-    """
-    Retorna la cantidad de elementos que cumplen con un criterio para una columna dada
-    """
-    "Criteria: Nombre del director del cual estamos buscando peliculas"
-    "Column: Columna que en este caso será la columna de vote_average"
+def countElementsByCriteria1(criteria, column_criteria, column_average, lst1, lst2):
     t1_start = process_time()
     counter = 0
     suma = 0
@@ -134,15 +129,12 @@ def countElementsByCriteria(lst, d, l):
         if b[column_criteria] == criteria:
             if float(a[column_average]) >= 6.0:
                 counter += 1
-            suma += float(a[column_average])
+                suma += float(a[column_average])
     t1_stop = process_time()
     print("tiempo de ejecucion ", t1_stop-t1_start," segundos")
     return (counter, round(suma/counter,2))
    
-   def countElementsByCriteria2(criteria:str,casting:list,details:list):
-    """
-    Retorna la cantidad de elementos que cumplen con un criterio para una columna dada
-    """
+def countElementsByCriteria2(criteria:str,casting:list,details:list):
     if len(casting)==0:
         print("La lista esta vacía") 
         return 0
@@ -163,7 +155,7 @@ def countElementsByCriteria(lst, d, l):
         t1_stop = process_time() #tiempo final
         print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
         resultados=[counter, promedio]
-    return resultados
+        return resultados
 
 def main():
     """
