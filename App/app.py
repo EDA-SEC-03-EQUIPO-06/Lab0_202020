@@ -118,6 +118,52 @@ def countElementsByCriteria(lst, d, l):
         t1_stop = process_time() #tiempo final
         print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
     return (counter, prom)
+   
+   def countElementsByCriteria1(criteria, column_criteria, column_average, lst1, lst2):
+    """
+    Retorna la cantidad de elementos que cumplen con un criterio para una columna dada
+    """
+    "Criteria: Nombre del director del cual estamos buscando peliculas"
+    "Column: Columna que en este caso será la columna de vote_average"
+    t1_start = process_time()
+    counter = 0
+    suma = 0
+    for i in range(1, len(lst2)):
+        a = list(lst1[i].values())
+        b = list(lst2[i].values())
+        if b[column_criteria] == criteria:
+            if float(a[column_average]) >= 6.0:
+                counter += 1
+            suma += float(a[column_average])
+    t1_stop = process_time()
+    print("tiempo de ejecucion ", t1_stop-t1_start," segundos")
+    return (counter, round(suma/counter,2))
+   
+   def countElementsByCriteria2(criteria:str,casting:list,details:list):
+    """
+    Retorna la cantidad de elementos que cumplen con un criterio para una columna dada
+    """
+    if len(casting)==0:
+        print("La lista esta vacía") 
+        return 0
+    else:
+        t1_start = process_time() #tiempo inicial
+        counter=0 #Cantidad de repeticiones
+        suma=0
+        for elemento in casting:
+            if criteria.lower() == elemento.get("director_name").lower(): #filtrar por palabra clave 
+                print("funciona")
+                id= elemento.get("id")
+                for cada_elemento in details:
+                    if cada_elemento.get("id")==id:
+                        if float(cada_elemento.get("vote_average"))>=6.0:
+                            counter+=1
+                            suma+=float(cada_elemento.get("vote_average"))
+        promedio= suma/counter 
+        t1_stop = process_time() #tiempo final
+        print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
+        resultados=[counter, promedio]
+    return resultados
 
 def main():
     """
